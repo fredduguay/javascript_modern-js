@@ -137,3 +137,30 @@ str.replace('Brad', 'Jack');
 
 //includes
 val = str.includes('foo');
+
+// ################
+// #TEMPLATE LITERALS (ES6)
+// ################
+
+const name = 'John';
+const myAge = 30;
+const job = 'Web Developer';
+const city = 'Miami';
+let html;
+function hello() {
+  return 'hello';
+}
+
+html = `
+<ul>
+<li>Name: ${name}</li>
+<li>Age: ${myAge}</li>
+<li>Job: ${job}</li>
+<li>City: ${city}</li>
+<li>${2 + 2}</li>
+<li>${hello()}</li>
+<li>${myAge > 30 ? 'Over 30' : 'Under 30'}</li>
+</ul>
+`;
+
+console.log(html);
