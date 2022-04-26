@@ -57,3 +57,27 @@ console.log(val2.length);
 
 // val3 with 2 decimals
 console.log(val3.toFixed(2));
+
+// #The Math Object
+let val;
+val = Math.PI;
+val = Math.E;
+
+//2
+val = Math.round(2.4);
+//3
+val = Math.ceil(2.4);
+//2
+val = Math.floor(2.8);
+//8
+val = Math.sqrt(64);
+//3
+val = Math.abs(-3);
+//64
+val = Math.pow(8, 2);
+//1
+val = Math.min(2, 33, 1, 444, 55, 35);
+//Random decimal number
+val = Math.random();
+//Random number between 1 and 20
+val = Math.floor(Math.random() * 20 + 1);
