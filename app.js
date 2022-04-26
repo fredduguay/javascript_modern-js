@@ -40,4 +40,20 @@ console.log(person, numbers);
 const sym = Symbol();
 console.log(typeof sym);
 
-//#TYPE CONVERSIONS
+//#TYPE CONVERSION
+val1 = String(4 + 4);
+val2 = [1, 2, 3, 4].toString();
+val3 = Number('5');
+
+//100
+val4 = parseInt('100.30');
+//100.30
+val5 = parseFloat('100.30');
+
+console.log(val1);
+
+console.log(val2);
+console.log(val2.length);
+
+// val3 with 2 decimals
+console.log(val3.toFixed(2));
