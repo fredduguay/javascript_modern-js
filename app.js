@@ -438,20 +438,20 @@ for (let x in user) {
 
 window.console.log(123);
 
-window.alert('Hello World');
+// window.alert('Hello World');
 
 //Prompt
-const input = prompt();
-alert(input);
+// const input = prompt();
+// alert(input);
 
 //Confirm
-if (confirm('Are you sure')) {
-  console.log('Yes');
-} else {
-  console.log('NO');
-}
+// if (confirm('Are you sure')) {
+//   console.log('Yes');
+// } else {
+//   console.log('NO');
+// }
 
-let val;
+// let val;
 
 //Outer height and width
 val = window.outerHeight;
@@ -477,10 +477,10 @@ val = window.location.href;
 val = window.location.search;
 
 //Redirect
-window.location.href = 'http://google.com';
+// window.location.href = 'http://google.com';
 
 //Reload
-window.location.reload();
+// window.location.reload();
 
 //History Object
 window.history.go(-2);
@@ -499,3 +499,38 @@ val = window.navigator.platform;
 val = window.navigator.appName;
 
 console.log(val);
+
+// ################
+// #BLOCK SCOPE WITH LET & CONST
+// ################
+
+//Global scope
+var sc_a = 1;
+let sc_b = 2;
+const sc_c = 3;
+
+function test() {
+  var sc_a = 4;
+  let sc_b = 5;
+  const sc_c = 6;
+
+  console.log('Function Scope: ', sc_a, sc_b, sc_c);
+}
+
+test();
+
+console.log('Global Scope: ', sc_a, sc_b, sc_c);
+
+if (true) {
+  // Block Scope
+  var sc_a = 4;
+  let sc_b = 5;
+  const sc_c = 6;
+  console.log('If Scope: ', sc_a, sc_b, sc_c);
+}
+
+for (let a = 0; a < 10; a++) {
+  console.log(`Loop ${a}`);
+}
+
+console.log('Global Scope: ', sc_a, sc_b, sc_c);
