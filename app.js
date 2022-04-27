@@ -247,3 +247,22 @@ birthday.setMinutes(30);
 birthday.setSeconds(25);
 
 console.log(birthday);
+
+// ################
+// #IF STATEMENTS AND COMPARISON OPERATORS
+// ################
+
+const id = 100;
+
+if (typeof id !== 'undefined') {
+  console.log(`The ID is ${id}`);
+} else {
+  console.log('NO ID');
+}
+
+//Ternary Operator
+console.log(id === 100 ? 'CORRECT' : 'INCORRECT');
+
+//Without Braces
+if (id === 100) console.log('CORRECT');
+else console.log('INCORRECT');
