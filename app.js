@@ -266,3 +266,32 @@ console.log(id === 100 ? 'CORRECT' : 'INCORRECT');
 //Without Braces
 if (id === 100) console.log('CORRECT');
 else console.log('INCORRECT');
+
+// ################
+// #SWITCHES
+// ################
+const color = 'red';
+
+switch (color) {
+  case 'red':
+    console.log('Color is red');
+    break;
+  case 'blue':
+    console.log('Color is blue');
+    break;
+  default:
+    console.log('Color is not blue or red');
+    break;
+}
+
+switch (new Date().getDay()) {
+  case 0:
+    day = 'Sunday';
+    break;
+  case 1:
+    day = 'Monday';
+    break;
+  default:
+    console.log('Day of the week unknown');
+    break;
+}
