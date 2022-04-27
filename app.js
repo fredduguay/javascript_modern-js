@@ -357,3 +357,77 @@ todo.delete = function () {
 todo.add();
 todo.edit(22);
 todo.delete();
+
+// ################
+// #LOOPS
+// ################
+
+//For Loop
+for (let i = 0; i <= 10; i++) {
+  if (i === 2) {
+    console.log('2 is my favorite number');
+  }
+
+  if (i === 5) {
+    console.log('Stop the loop');
+    break;
+  }
+  console.log(`For iteration # ${i}`);
+}
+
+//While Loop
+let x = 0;
+
+while (x < 5) {
+  console.log(`While iteration # ${x}`);
+  x++;
+}
+
+//Do while
+
+let w = 1;
+
+do {
+  console.log(`Do While iteration # ${w}`); //Runs at least once even when 'while condition' is not met
+  w++;
+} while (w > 6);
+
+const cars = ['Ford', 'Chevy', 'Honda'];
+
+//For vs forEach
+for (let i = 0; i < cars.length; i++) {
+  console.log(cars[i]);
+}
+
+cars.forEach(function (car, index, array) {
+  console.log(car);
+});
+
+//For each can take 3 parameters (element, index, array)
+cars.forEach(function (car, index, array) {
+  console.log(car);
+});
+
+//Map
+const users = [
+  { id: 1, name: 'John' },
+  { id: 2, name: 'Sara' },
+  { id: 3, name: 'Karen' }
+];
+
+const ids = users.map(function (user) {
+  return user.id;
+});
+
+console.log(ids);
+
+const user = {
+  firstName: 'John',
+  lastName: 'Doe',
+  age: 40
+};
+
+//For  in / Get key values pairs from object
+for (let x in user) {
+  console.log(`${x} : ${user[x]}`);
+}
