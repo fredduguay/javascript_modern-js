@@ -164,3 +164,59 @@ html = `
 `;
 
 console.log(html);
+
+// ################
+// #ARRAYS & ARRAY METHODS
+// ################
+const numbers1 = [1, 2, 3, 4, 5];
+const numbers2 = new Array(1, 2, 3, 4, 5);
+const numbers3 = [122, 6, 44, 23, 903];
+const numbers4 = [122, 6, 44, 23, 903];
+const fruits = ['banana', 'apple', 'orange'];
+
+val = numbers1.length;
+val = Array.isArray(numbers1);
+
+//Find  index of value
+val = numbers.indexOf(4);
+
+//Mutation
+//Add on to end
+numbers.push(8);
+//Add on to front
+numbers.unshift(4);
+
+//Take off from end
+numbers.pop();
+//Take off from front
+numbers.shift();
+
+//Splice values
+numbers.splice(1, 3);
+
+//Reverse
+numbers.reverse();
+
+//Concatenate arrays
+val = numbers1.concat(numbers2);
+
+//Sorting arrays
+val = fruits.sort();
+val = numbers3.sort(); // will sort by the first number
+
+//Use the compare fonction to sort
+val = numbers.sort(function (x, y) {
+  return x - y;
+});
+
+//Use the compare fonction to reversesort
+val = numbers.sort(function (x, y) {
+  return y - x;
+});
+
+//Find and return the first number that matches the condition in the array
+function under50(num) {
+  return num < 50;
+}
+
+val = console.log(numbers4.find(under50));
