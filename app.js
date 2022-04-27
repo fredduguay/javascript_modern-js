@@ -295,3 +295,65 @@ switch (new Date().getDay()) {
     console.log('Day of the week unknown');
     break;
 }
+
+// ################
+// #FUNCTIONS
+// ################
+
+//Function Declarations
+
+//DEFAULTS: ES5
+function greet(firstName, lastName) {
+  if (typeof firstName === 'undefined') {
+    firstName = 'John';
+  }
+  if (typeof lastName === 'undefined') {
+    firstName = 'Doe';
+  }
+  return 'Hello' + firstName + ' ' + lastName;
+}
+
+//DEFAULTS: ES6
+function greet(firstName = 'John', lastName = 'Doe') {
+  if (typeof firstName === 'undefined') {
+    firstName = 'John';
+  }
+  if (typeof lastName === 'undefined') {
+    firstName = 'Doe';
+  }
+  return 'Hello' + firstName + ' ' + lastName;
+}
+
+console.log(greet());
+
+//Function Expressions
+
+const square = function (x = 3) {
+  return x * x;
+};
+
+//Returns 3 because nothing is passed to the function
+console.log(square());
+
+//Immediatly invokable function expresssions - IIFEs
+(function (name) {
+  console.log('Hello' + name);
+})('Brad');
+
+//Property Methods
+const todo = {
+  add: function () {
+    console.log('add todo...');
+  },
+  edit: function (id) {
+    console.log(`Edit todo ${id}`);
+  }
+};
+
+todo.delete = function () {
+  console.log('Delete todo...');
+};
+
+todo.add();
+todo.edit(22);
+todo.delete();
