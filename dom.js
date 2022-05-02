@@ -25,7 +25,7 @@ val = document.links;
 val = document.links[0];
 val = document.links[0].id;
 val = document.links[0].className; // return all the classes
-val = document.links[0].classList;
+val = document.links[0].classList; // returns all the classes as a DOMTokenList
 
 val = document.images;
 
@@ -227,3 +227,57 @@ li.appendChild(link);
 document.querySelector('ul.collection').appendChild(li);
 
 console.log(li);
+
+// // ################
+// // #REMOVING AND REPLACING ELEMENTS
+// // ################
+
+//REPLACE ELEMENT
+//Create element
+const newHeading = document.createElement('h2');
+
+//Add id
+newHeading.id = 'task-title';
+//New text node
+newHeading.appendChild(document.createTextNode('Task List'));
+
+//Get the old heading
+const oldHeading = document.getElementById('task-title');
+
+//Parent
+const cardAction = document.querySelector('.card-action');
+
+//Replace
+//replaceChild(newValue, oldValue)
+cardAction.replaceChild(newHeading, oldHeading);
+
+//REMOVE ELEMENT
+const lis = document.querySelectorAll('li');
+const list = document.querySelector('ul');
+
+//Remove list item with querySelectorAll
+lis[0].remove();
+
+//Remove child element
+list.removeChild(lis[3]);
+
+//Classses and attributes
+const firstLi = document.querySelector('li:first-child');
+const link = firstLi.children[0];
+
+//Classes
+val = link.className;
+val = link.classListl;
+val - link.classList[0];
+link.classList.add('test');
+link.classList.remove('test');
+val = link;
+
+//Attributes
+val = link.getAttribute('href');
+(val = link), setAttribute('href', 'http://google.com');
+link.setAttribute('title', 'Google');
+val = link.hasAttribute('title'); //boolean
+link.removeAttribute('title');
+
+console.log(newHeading);
