@@ -133,3 +133,97 @@ for (let i = 0; i < liEven.length; i++) {
 }
 
 console.log(citem);
+
+// // ################
+// // #TRAVERSING THE DOM
+// // ################
+
+const list = document.querySelector('ul.collection');
+const listItem = document.querySelector('li.collection-item:first-child');
+
+console.log((val = listItem)); //li
+console.log((val = list)); //ul
+
+//Get child nodes
+val = list.childNodes;
+val = list.childNodes[0];
+val = list.childNodes[0].nodeName;
+
+//Node types
+//1 - Element
+//2 - Attribute (Deprecated)
+//3 - Text node
+//8 - Comment
+//9 - Document itself
+//10 - DocType`
+
+//Get children element nodes
+val = list.children;
+val = list.children[1];
+val = list.children[1].textContent = 'Hello';
+
+// //Children of children
+val = list.children[3].children;
+val = list.children[3].children[0];
+
+//First child
+val = list.firstChild;
+val = list.firstElementChild;
+
+//Last child
+val = list.lastChild;
+val = list.lastElementChild;
+
+//Count child elements
+val = list.childElementCount;
+
+//Get parent node
+val = listItem.parentNode;
+val = listItem.parentElement;
+val = listItem.parentElement.parentElement;
+
+//Get next sibling
+val = listItem.nextSibling;
+val = listItem.nextElementSibling;
+
+//Get prev sibling
+val = listItem.previousSibling;
+val = listItem.previousElementSibling;
+
+//Traversing up and down
+val = listItem.nextElementSibling.nextElementSibling.previousElementSibling;
+
+console.log(val);
+
+// // ################
+// // #CREATING ELEMENTS
+// // ################
+
+//Create element
+const li = document.createElement('li');
+
+//Add Class
+li.className = 'collection-item';
+
+//Add id
+li.id = 'new-item';
+
+//Add attribute
+li.setAttribute('title', 'New item');
+
+//Create text node and append
+li.appendChild(document.createTextNode('Hello World'));
+
+//Create new link element
+const link = document.createElement('a');
+//Add classes
+link.className = 'delete-item secondary-content';
+link.innerHTML = '<i class="fa fa-remove"></i>';
+
+//Append link into li
+li.appendChild(link);
+
+//Append li as child to ul
+document.querySelector('ul.collection').appendChild(li);
+
+console.log(li);
