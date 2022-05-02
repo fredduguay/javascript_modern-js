@@ -252,18 +252,18 @@ const cardAction = document.querySelector('.card-action');
 cardAction.replaceChild(newHeading, oldHeading);
 
 //REMOVE ELEMENT
-const lis = document.querySelectorAll('li');
-const list = document.querySelector('ul');
+const all_lis = document.querySelectorAll('li');
+const ul_list = document.querySelector('ul');
 
 //Remove list item with querySelectorAll
-lis[0].remove();
+all_lis[0].remove();
 
 //Remove child element
-list.removeChild(lis[3]);
+ul_list.removeChild(all_lis[3]);
 
 //Classses and attributes
 const firstLi = document.querySelector('li:first-child');
-const link = firstLi.children[0];
+const firstLiChild = firstLi.children[0];
 
 //Classes
 val = link.className;
@@ -271,13 +271,55 @@ val = link.classListl;
 val - link.classList[0];
 link.classList.add('test');
 link.classList.remove('test');
-val = link;
+val = firstLiChild;
 
 //Attributes
 val = link.getAttribute('href');
-(val = link), setAttribute('href', 'http://google.com');
+val = link.setAttribute('href', 'http://google.com');
 link.setAttribute('title', 'Google');
 val = link.hasAttribute('title'); //boolean
 link.removeAttribute('title');
 
 console.log(newHeading);
+
+// // ################
+// // #EVENT LISTENERS & THE EVENT OBJECT
+// // ################
+// document.querySelector('.clear-tasks').addEventListener('click', function (e) {
+//   console.log('Hello World');
+
+// e.preventDefault();
+// });
+
+document.querySelector('.clear-tasks').addEventListener('click', onClick);
+
+function onClick(e) {
+  val = e;
+
+  //Prevent default behavior
+  e.preventDefault();
+
+  //Event target element
+  val = e.target;
+  val = e.target.id;
+  val = e.target.className;
+  val = e.target.classList;
+
+  e.target.innerText = 'Hello';
+
+  //Event type
+  val = e.type;
+
+  //Timestamp
+  val = e.timeStamp;
+
+  //Coords event relative to the window
+  val = e.clientY;
+  val = e.clientX;
+
+  //Coords event relative to the element
+  val = e.offsetY;
+  val = e.offsetX;
+
+  console.log(val);
+}
