@@ -339,12 +339,12 @@ const heading = document.querySelector('h5');
 // clearBtn.addEventListener('mouseup', runEvent);
 
 // // can fire from children element
-// card.addEventListener('mouseover', runEvent);
-// card.addEventListener('mouseout', runEvent);
+card.addEventListener('mouseover', runEvent);
+card.addEventListener('mouseout', runEvent);
 
 // // will only fire from parent element
-// card.addEventListener('mouseenter', runEvent);
-// card.addEventListener('mouseleave', runEvent);
+card.addEventListener('mouseenter', runEvent);
+card.addEventListener('mouseleave', runEvent);
 
 card.addEventListener('mousemove', runEvent);
 
@@ -356,4 +356,42 @@ function runEvent(e) {
   heading.textContent = `MouseX: ${e.offsetX} MouseY: ${e.offsetY}`;
 
   document.body.style.backgroundColor = `rgb(${e.offsetX}, ${e.offsetY}, 40)`;
+}
+
+// ################
+// #KEYBOARD & INPUT EVENTS
+// ################
+
+const form = document.querySelector('form');
+const taskInput = document.getElementById('task');
+
+//Clear input
+taskInput.value = '';
+
+// form.addEventListener('submit', fireEvent);
+
+// taskInput.addEventListener('keydown', runEvent);
+// taskInput.addEventListener('keyup', runEvent);
+// taskInput.addEventListener('keypress', runEvent);
+// taskInput.addEventListener('focus', runEvent);
+// taskInput.addEventListener('blur', runEvent);
+// taskInput.addEventListener('cut', runEvent);
+// taskInput.addEventListener('paste ', runEvent);
+
+//On input
+taskInput.addEventListener('input', runEvent);
+
+//On change
+document.getElementsByTagName('select').addEventListener('change', runEvent);
+
+function fireEvent(e) {
+  console.log(`Event TYPE: ${e.type}`);
+
+  //Get input value
+  console.log(taskInput.value);
+
+  //Bind heading value
+  heading.innerText = e.target.value;
+
+  e.preventDefault();
 }
