@@ -13,12 +13,6 @@ console.clear();
 
 console.time('Hello');
 console.log('Hello World');
-console.log('Hello World');
-console.log('Hello World');
-console.log('Hello World');
-console.log('Hello World');
-console.log('Hello World');
-console.log('Hello World');
 console.timeEnd('Hello');
 
 // ################
