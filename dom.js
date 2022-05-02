@@ -285,6 +285,7 @@ console.log(newHeading);
 // // ################
 // // #EVENT LISTENERS & THE EVENT OBJECT
 // // ################
+
 // document.querySelector('.clear-tasks').addEventListener('click', function (e) {
 //   console.log('Hello World');
 
@@ -322,4 +323,37 @@ function onClick(e) {
   val = e.offsetX;
 
   console.log(val);
+}
+
+// // ################
+// // #MOUSE EVENTS
+// // ################
+
+const clearBtn = document.querySelector('.clear-tasks');
+const card = document.querySelector('.card');
+const heading = document.querySelector('h5');
+
+// clearBtn.addEventListener('click', runEvent);
+// clearBtn.addEventListener('dblclick', runEvent);
+// clearBtn.addEventListener('mousedown', runEvent);
+// clearBtn.addEventListener('mouseup', runEvent);
+
+// // can fire from children element
+// card.addEventListener('mouseover', runEvent);
+// card.addEventListener('mouseout', runEvent);
+
+// // will only fire from parent element
+// card.addEventListener('mouseenter', runEvent);
+// card.addEventListener('mouseleave', runEvent);
+
+card.addEventListener('mousemove', runEvent);
+
+//Event handler
+function runEvent(e) {
+  console.log(e);
+  console.log(`EVENT TYPE: ${e.type}`);
+
+  heading.textContent = `MouseX: ${e.offsetX} MouseY: ${e.offsetY}`;
+
+  document.body.style.backgroundColor = `rgb(${e.offsetX}, ${e.offsetY}, 40)`;
 }
