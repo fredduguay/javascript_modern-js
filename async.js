@@ -2,15 +2,69 @@
 // #ASYNCHRONOUS JAVASCRIPT
 // ################
 
+//XHR
+
+// document.getElementById('button').addEventListener('click', loadData);
+
+function loadData() {
+  //Create XHR Object
+  const xhr = new XMLHttpRequest();
+
+  //OPEN
+  xhr.open('GET', 'data/data.txt', true);
+
+  //ReadyStateChange 1
+  //   console.log('READYSTATE', xhr.readyState);
+
+  //Optional - Used for spinners/loaders
+  xhr.onprogress = function () {
+    //spinner/loader
+    console.log('READYSTATE', xhr.readyState);
+  };
+  xhr.onload = function () {
+    if (this.status === 200) {
+      //   console.log(this.responseText);
+      document.getElementById(
+        'output'
+      ).innerHTML = `<h1>${this.responseText}</h1>`;
+    }
+  };
+
+  //   xhr.onreadystatechange = function () {
+  //     console.log('READYSTATE', xhr.readyState);
+  //     if (this.status === 200 && this.readyState === 4) {
+  //       console.log(this.responseText);
+  //     }
+  //   };
+
+  xhr.onerror = function () {
+    console.log('Request error');
+  };
+
+  xhr.send();
+
+  // readyState Values
+  // 0: request not initialized
+  // 1: server connection established
+  // 2: request received
+  // 3: processing request
+  // 4: request finished and response is ready
+
+  // HTTP Statuses
+  // 200: "OK"
+  // 403: "Forbidden"
+  // 404: "Not Found"
+}
+
 //AJAX AND JSON
 
 //Load single customer
-document.getElementById('button1').addEventListener('click', loadCustomer);
+// document.getElementById('button1').addEventListener('click', loadCustomer);
 
 function loadCustomer(e) {
   const xhr = new XMLHttpRequest();
 
-  xhr.open('GET', 'customer.json', true);
+  xhr.open('GET', 'data/customer.json', true);
 
   xhr.onload = function () {
     if (this.status === 200) {
@@ -34,12 +88,12 @@ function loadCustomer(e) {
 
 //Load multiple customers
 
-document.getElementById('button2').addEventListener('click', loadCustomers);
+// document.getElementById('button2').addEventListener('click', loadCustomers);
 
 function loadCustomers(e) {
   const xhr_r = new XMLHttpRequest();
 
-  xhr_r.open('GET', 'customers.json', true);
+  xhr_r.open('GET', 'data/customers.json', true);
 
   xhr_r.onload = function () {
     if (this.status === 200) {
@@ -63,4 +117,54 @@ function loadCustomers(e) {
   };
 
   xhr_r.send();
+}
+
+//Callback functions
+
+//Synchronous
+
+// const posts = [
+//   { title: 'Post One', body: 'This is post #1' },
+//   { title: 'Post Two', body: 'This is post #2' }
+// ];
+
+// function createPost(post) {
+//   setTimeout(function () {
+//     posts.push(post);
+//   }, 2000);
+// }
+
+// function getPosts() {
+//   setTimeout(function () {
+//     let output = '';
+//     posts.forEach(function (post) {
+//       output += `<li>${post.title}</li>`;
+//     });
+
+//     document.body.innerHTML = output;
+//   }, 1000);
+// }
+
+// createPost({ title: 'Post three', body: 'This is post #3' });
+
+// getPosts();
+
+//Asynchronous
+
+function createPost(post, callback) {
+  setTimeout(function () {
+    posts.push(post);
+    callback();
+  }, 2000);
+}
+
+function getPosts() {
+  setTimeout(function () {
+    let output = '';
+    posts.forEach(function (post) {
+      output += `<li>${post.title}</li>`;
+    });
+
+    document.body.innerHTML = output;
+  }, 1000);
 }
