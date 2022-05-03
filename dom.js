@@ -350,12 +350,10 @@ card.addEventListener('mousemove', runEvent);
 
 //Event handler
 function runEvent(e) {
-  console.log(e);
-  console.log(`EVENT TYPE: ${e.type}`);
-
-  heading.textContent = `MouseX: ${e.offsetX} MouseY: ${e.offsetY}`;
-
-  document.body.style.backgroundColor = `rgb(${e.offsetX}, ${e.offsetY}, 40)`;
+  // console.log(e);
+  // console.log(`EVENT TYPE: ${e.type}`);
+  // heading.textContent = `MouseX: ${e.offsetX} MouseY: ${e.offsetY}`;
+  // document.body.style.backgroundColor = `rgb(${e.offsetX}, ${e.offsetY}, 40)`;
 }
 
 // ################
@@ -382,7 +380,7 @@ taskInput.value = '';
 taskInput.addEventListener('input', runEvent);
 
 //On change
-document.getElementsByTagName('select').addEventListener('change', runEvent);
+// document.getElementsByTagName('select').addEventListener('change', runEvent);
 
 function fireEvent(e) {
   console.log(`Event TYPE: ${e.type}`);
@@ -433,3 +431,52 @@ function deleteItem(e) {
     e.target.parentElement.parentElement.remove();
   }
 }
+
+// ################
+// #LOCAL AND SESSION STORAGE
+// ################
+
+//set local storage item
+localStorage.setItem('name', 'John');
+localStorage.setItem('age', '30');
+
+//set local storage item
+sessionStorage.setItem('name', 'Beth');
+
+//remove from storager
+//localStorage.removeItem('name');
+
+//get from storage
+const name = localStorage.getItem('name');
+const age = localStorage.getItem('age');
+console.log(name, age);
+
+//clear local store
+// localStorage.clear();
+
+document.querySelector('form').addEventListener('submit', function (e) {
+  const task = document.getElementById('task').value;
+
+  let tasks;
+
+  if (localStorage.getItem('tasks') === null) {
+    tasks = [];
+  } else {
+    tasks = JSON.parse(localStorage.getItem('tasks'));
+  }
+
+  tasks.push(task);
+
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+
+  alert('Task saved');
+
+  e.preventDefault();
+});
+
+//Convert to array to loop items
+const tasks = JSON.parse(localStorage.getItem('tasks'));
+
+tasks.forEach(function (task) {
+  console.log(task);
+});
