@@ -2,20 +2,21 @@
 // #CONSTRUCTOR
 // ################
 
-function Person(name, dob) {
-  this.name = name;
+function Person(firstName, lastName, dob) {
+  this.firstName = firstName;
+  this.lastName = lastName;
   //   this.age = age;
   this.birthday = new Date(dob);
-  this.calculateAge = function () {
-    const diff = Date.now() - this.birthday.getTime();
-    const ageDate = new Date(diff);
-    return Math.abs(ageDate.getUTCFullYear() - 1970);
-  };
+  //   this.calculateAge = function () {
+  //     const diff = Date.now() - this.birthday.getTime();
+  //     const ageDate = new Date(diff);
+  //     return Math.abs(ageDate.getUTCFullYear() - 1970);
+  //   };
 }
 
 const brad = new Person('Brad', '9-10-1981');
 
-console.log(brad.calculateAge());
+// console.log(brad.calculateAge());
 
 // ################
 // #BUILT IN CONSTRUCTORS
@@ -62,3 +63,37 @@ const arr2 = new Array(1, 2, 3, 4);
 //Regular expressions
 const re1 = /\w+/;
 const re2 = new RegExp('\\w+');
+
+// ################
+// #PROTOTYPES
+// ################
+
+//Calculate age
+Person.prototype.calculateAge = function () {
+  const diff = Date.now() - this.birthday.getTime();
+  const ageDate = new Date(diff);
+  return Math.abs(ageDate.getUTCFullYear() - 1970);
+};
+
+//Get full name
+Person.prototype.getFullName = function () {
+  return `${this.firstName} ${this.lastName}`;
+};
+
+Person.prototype.getsMaried = function (newLastName) {
+  this.lastName = newLastName;
+};
+
+const john = new Person('John', 'Doe', '8-12-90');
+const mary = new Person('Mary', 'Johnson', 'March 20 1978');
+
+console.log(mary);
+
+console.log(john.calculateAge());
+
+console.log(mary.getFullName());
+console.log(mary.getsMaried('Roberson'));
+console.log(mary.getFullName());
+
+//Object.prototype
+console.log(mary.hasOwnProperty('firstName'));
