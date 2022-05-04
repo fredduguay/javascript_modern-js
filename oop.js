@@ -97,3 +97,48 @@ console.log(mary.getFullName());
 
 //Object.prototype
 console.log(mary.hasOwnProperty('firstName'));
+
+// ################
+// #PROTOTYPAL INHERITANCE
+// ################
+
+function Individual(firstName, lastName) {
+  (this.firstName = firstName), (this.lastName = lastName);
+}
+
+//Greeting
+Individual.prototype.greeting = function () {
+  return `Hello there ${this.firstName} ${this.lastName}`;
+};
+
+const ind1 = new Individual('John', 'Doe');
+
+console.log(ind1.greeting());
+
+//Customer constructor
+function Customer(firstName, lastName, phone, membership) {
+  Individual.call(this, firstName, lastName);
+
+  this.phone = phone;
+  this.membership = membership;
+}
+
+//Inherit the Individual prototype methods
+Customer.prototype = Object.create(Individual.prototype);
+
+//Make Customer.prototype return customer();
+Customer.prototype.constructor = Customer;
+
+//Create Customer
+
+const customer1 = new Customer('Tom', 'Smith', '555-555-5555', 'Standard');
+
+console.log(customer1);
+
+//Customer Greeting
+Customer.prototype.greeting = function () {
+  return `Hello there ${this.firstName} ${this.lastName}, welcome to our company`;
+};
+
+console.log(ind1.greeting());
+console.log(customer1.greeting());
