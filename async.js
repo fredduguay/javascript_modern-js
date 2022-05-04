@@ -212,3 +212,7 @@ createPost({ title: 'Post three', body: 'This is post #3' })
   .catch(function (err) {
     console.log(err);
   });
+
+// ################
+// #FETCH API
+// ################
