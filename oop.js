@@ -142,3 +142,34 @@ Customer.prototype.greeting = function () {
 
 console.log(ind1.greeting());
 console.log(customer1.greeting());
+
+// ################
+// #OBJECT.CREATE
+// ################
+
+const personPrototypes = {
+  greeting: function () {
+    return `Hello there ${this.firstName} ${this.lastName}`;
+  },
+  getsMaried: function (newLastName) {
+    this.lastName = newLastName;
+  }
+};
+
+const bob = Object.create(personPrototypes);
+
+bob.firstName = 'Bob';
+bob.lastName = 'Ross';
+bob.age = '22';
+
+console.log(bob);
+console.log(bob.getsMaried('Jagger'));
+console.log(bob);
+
+const albert = Object.create(personPrototypes, {
+  firstName: { value: 'Albert' },
+  lastName: { value: 'Jacobs' },
+  age: { value: 36 }
+});
+
+console.log(albert.greeting());
