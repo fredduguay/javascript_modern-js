@@ -173,3 +173,66 @@ const albert = Object.create(personPrototypes, {
 });
 
 console.log(albert.greeting());
+
+// ################
+// #ES6 CLASSES
+// ################
+
+class ClassPerson {
+  constructor(firstName, lastName, dob) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.birthday = new Date(dob)
+  }
+
+  greeting() {
+    return `Hello there ${this.firstName} ${this.lastName}`;
+  }
+
+  calculateAge() {
+      const diff = Date.now() = this.birthday.getTime();
+      const ageDate = new Date(diff)
+      return Math.abs(ageDate.getUTCFullYear() - 1970);
+  }
+
+  getsMaried(newLastName) {
+    this.lastName = newLastName;
+  }
+
+  static addNumbers(x, y) {
+      return x + y;
+  }
+}
+
+const dave = new ClassPerson('Dave', 'McDavid', '11-13-1980');
+
+dave.getsMaried('Xen');
+
+console.log(dave.greeting());
+
+console.log(ClassPerson.addNumbers(1,2));
+
+// ################
+// #ES6 CLASSES INHERITANCE (SUBCLASSES)
+// ################
+
+class ClassCustomer extends ClassPerson {
+    constructor(firstName, lastName, phone, membership) {
+        super(firstName, lastName);
+        
+        this.phone = phone;
+        this.membership = membership;
+    }
+
+    static getMembershipCost() {
+        return 500;
+    }
+}
+
+const max = new ClassCustomer('Max', 'Tremblay', '556-898-6897', 'Standard');
+
+console.log(max);
+
+console.log(max.greeting());
+
+console.log(ClassCustomer.getMembershipCost());
