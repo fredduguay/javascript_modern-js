@@ -221,13 +221,14 @@ document.getElementById('buttonA').addEventListener('click', getText);
 document.getElementById('buttonB').addEventListener('click', getJson);
 document.getElementById('buttonC').addEventListener('click', getExternal);
 
-//Get local text file data
+//Get local text file data | No arrow function
 function getText() {
   fetch('../../data/data.txt')
     .then(function (res) {
       return res.text();
     })
     .then(function (data) {
+      console.log(data);
       document.getElementById('output').innerHTML = data;
     })
     .catch(function (err) {
@@ -235,7 +236,19 @@ function getText() {
     });
 }
 
-//Get local json data
+//Get local text file data | Arrow function
+
+function getText() {
+  fetch('../../data/data.txt')
+    .then((res) => res.text)
+    .then((data) => {
+      console.log(data);
+      document.getElementById('output').innerHTML = data;
+    })
+    .catch((err) => console.log(err));
+}
+
+//Get local json data | No arrow function
 function getJson() {
   fetch('../../data/posts.json')
     .then(function (res) {
@@ -254,13 +267,45 @@ function getJson() {
     });
 }
 
-//Get from external API
+//Get local json data | Arrow Function
+function getJson() {
+  fetch('../../data/posts.json')
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      let output = '';
+      data.forEach(function (post) {
+        output += `<li>${post.title}</li>`;
+      });
+      document.getElementById('output').innerHTML = output;
+    })
+    .catch((err) => console.log(err));
+}
+
+//Get from external API | No arrow function
+// function getExternal() {
+//   fetch('https://api.github.com/users')
+//     .then(function (res) {
+//       return res.json();
+//     })
+//     .then(function (data) {
+//       console.log(data);
+//       let output = '';
+//       data.forEach(function (user) {
+//         output += `<li>${user.login}</li>`;
+//       });
+//       document.getElementById('output').innerHTML = output;
+//     })
+//     .catch(function (err) {
+//       console.log(err);
+//     });
+// }
+
+//Get from external API | Arrow function
 function getExternal() {
   fetch('https://api.github.com/users')
-    .then(function (res) {
-      return res.json();
-    })
-    .then(function (data) {
+    .then((res) => res.json())
+    .then((data) => {
       console.log(data);
       let output = '';
       data.forEach(function (user) {
@@ -268,7 +313,58 @@ function getExternal() {
       });
       document.getElementById('output').innerHTML = output;
     })
-    .catch(function (err) {
-      console.log(err);
-    });
+    .catch((err) => console.log(err));
 }
+
+// ################
+// #FETCH API
+// ################
+
+// No arrow function
+// const sayHello = function()  {
+//   console.log('Hello');
+// }
+
+// const sayHello = () => {
+//   console.log('Hello');
+// };
+
+//One line function does not need curly braces
+// const sayHello = () => console.log('Hello');
+
+//One line returns
+// const sayHello = () => 'Hello';
+
+//Same as above
+// const sayHello = function() {
+//   return 'Hello';
+// }
+
+//Return object
+// const sayHello = () => ({msg: 'Hello'})
+
+//Single param does not need parenthesis
+// const sayHello = name => console.log(`Hello ${name}`);
+
+//Multiple params need parenthesis
+// const sayHello = (firstName, lastName) =>
+//   console.log(`Hello ${firstName} ${lastName}`);
+
+// sayHello('Brad', 'Traversy');
+
+const users = ['Nathan', 'John', 'William'];
+
+// No arrow function
+// const nameLenghts = users.map(function (name) {
+//   return name.length;
+// });
+
+//Shorter
+// const nameLenghts = users.map((name) => {
+//   return name.length;
+// });
+
+//Shortest
+const nameLenghts = users.map((name) => name.length);
+
+console.log(nameLenghts);
