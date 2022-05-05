@@ -2,14 +2,14 @@
 // #XHR
 // ################
 
-// document.getElementById('button').addEventListener('click', loadData);
+document.getElementById('button').addEventListener('click', loadData);
 
 function loadData() {
   //Create XHR Object
   const xhr = new XMLHttpRequest();
 
   //OPEN
-  xhr.open('GET', 'data/data.txt', true);
+  xhr.open('GET', '../data/data.txt', true);
 
   //ReadyStateChange 1
   //   console.log('READYSTATE', xhr.readyState);
@@ -59,12 +59,12 @@ function loadData() {
 // ################
 
 //Load single customer
-// document.getElementById('button1').addEventListener('click', loadCustomer);
+document.getElementById('button1').addEventListener('click', loadCustomer);
 
 function loadCustomer(e) {
   const xhr = new XMLHttpRequest();
 
-  xhr.open('GET', 'data/customer.json', true);
+  xhr.open('GET', '../data/customer.json', true);
 
   xhr.onload = function () {
     if (this.status === 200) {
@@ -88,12 +88,12 @@ function loadCustomer(e) {
 
 //Load multiple customers
 
-// document.getElementById('button2').addEventListener('click', loadCustomers);
+document.getElementById('button2').addEventListener('click', loadCustomers);
 
 function loadCustomers(e) {
   const xhr_r = new XMLHttpRequest();
 
-  xhr_r.open('GET', 'data/customers.json', true);
+  xhr_r.open('GET', '../data/customers.json', true);
 
   xhr_r.onload = function () {
     if (this.status === 200) {
@@ -207,12 +207,68 @@ function getPosts() {
 }
 
 //then = resolve ,  catch = reject
-createPost({ title: 'Post three', body: 'This is post #3' })
-  .then(getPosts)
-  .catch(function (err) {
-    console.log(err);
-  });
+// createPost({ title: 'Post three', body: 'This is post #3' })
+//   .then(getPosts)
+//   .catch(function (err) {
+//     console.log(err);
+//   });
 
 // ################
 // #FETCH API
 // ################
+
+document.getElementById('buttonA').addEventListener('click', getText);
+document.getElementById('buttonB').addEventListener('click', getJson);
+document.getElementById('buttonC').addEventListener('click', getExternal);
+
+//Get local text file data
+function getText() {
+  fetch('../../data/data.txt')
+    .then(function (res) {
+      return res.text();
+    })
+    .then(function (data) {
+      document.getElementById('output').innerHTML = data;
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+}
+
+//Get local json data
+function getJson() {
+  fetch('../../data/posts.json')
+    .then(function (res) {
+      return res.json();
+    })
+    .then(function (data) {
+      console.log(data);
+      let output = '';
+      data.forEach(function (post) {
+        output += `<li>${post.title}</li>`;
+      });
+      document.getElementById('output').innerHTML = output;
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+}
+
+//Get from external API
+function getExternal() {
+  fetch('https://api.github.com/users')
+    .then(function (res) {
+      return res.json();
+    })
+    .then(function (data) {
+      console.log(data);
+      let output = '';
+      data.forEach(function (user) {
+        output += `<li>${user.login}</li>`;
+      });
+      document.getElementById('output').innerHTML = output;
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+}
